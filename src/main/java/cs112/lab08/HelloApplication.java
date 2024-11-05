@@ -22,26 +22,46 @@ public class HelloApplication extends Application {
             new LoteriaCard("La ingeniería", "9.png", 9),
     };
 
-
+    private boolean[] cardsShown = new boolean[LOTERIA_CARDS.length];
+    private int cardsDrawn = 0;
     @Override
     public void start(Stage stage) throws IOException {
+//        COMPONENTS
+
         Label titleLabel = new Label("Welcome to EChALE STEM Loteria!");
-        ImageView cardImageview = new ImageView();
+        ImageView cardImageView = new ImageView();
         Label messageLabel = new Label("Las matematicas");
         Button drawCardButton = new Button("Draw Random Card");
         ProgressBar gameProgressBar = new ProgressBar(0);
-        VBox vbox = new VBox(10, titleLabel, cardImageview, messageLabel, drawCardButton, gameProgressBar);
-        Scene scene = new Scene(vbox,400,600);
+        VBox vbox = new VBox(10, titleLabel, cardImageView, messageLabel, drawCardButton, gameProgressBar);
+
+        Scene scene = new Scene(vbox,350,500);
         stage.setTitle("EChALE STEM LOTERIA");
         stage.setScene(scene);
         stage.show();
 
 //        STYLING
+
         titleLabel.setStyle("-fx-font-size: 20px");
-        cardImageview.setFitHeight(280);
-        cardImageview.setFitHeight(300);
+        cardImageView.setFitHeight(280);
+        cardImageView.setFitHeight(300);
         messageLabel.setStyle("-fx-font-size: 15px");
         vbox.setStyle("-fx-alignment: center; -fx-padding: 15px");
+
+//         EVENT HANDLER
+        drawCardButton.setOnAction(event -> {
+            if (cardsDrawn < LOTERIA_CARDS.length) {
+                int randomIdx;
+
+                do {
+                    randomIdx = (int) (Math.random() * LOTERIA_CARDS.length);
+                } while (cardsShown[randomIdx]);
+
+                LoteriaCard card = LOTERIA_CARDS[randomIdx];
+                cardImageView.setImage(card.getImage());
+
+            }
+        });
 
     }
 
