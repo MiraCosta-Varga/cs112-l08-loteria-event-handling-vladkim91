@@ -26,21 +26,23 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Label titleLabel = new Label("Welcome to EChALE STEM Loteria!");
-
         ImageView cardImageview = new ImageView();
-
         Label messageLabel = new Label("Las matematicas");
-
         Button drawCardButton = new Button("Draw Random Card");
-
         ProgressBar gameProgressBar = new ProgressBar(0);
-
         VBox vbox = new VBox(10, titleLabel, cardImageview, messageLabel, drawCardButton, gameProgressBar);
-
-        Scene scene = new Scene(vbox);
+        Scene scene = new Scene(vbox,400,600);
         stage.setTitle("EChALE STEM LOTERIA");
         stage.setScene(scene);
         stage.show();
+
+//        STYLING
+        titleLabel.setStyle("-fx-font-size: 20px");
+        cardImageview.setFitHeight(280);
+        cardImageview.setFitHeight(300);
+        messageLabel.setStyle("-fx-font-size: 15px");
+        vbox.setStyle("-fx-alignment: center; -fx-padding: 15px");
+
     }
 
     public static void main(String[] args) {
