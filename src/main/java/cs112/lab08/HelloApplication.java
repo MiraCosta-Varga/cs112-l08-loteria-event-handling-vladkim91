@@ -43,8 +43,8 @@ public class HelloApplication extends Application {
 //        STYLING
 
         titleLabel.setStyle("-fx-font-size: 20px");
-        cardImageView.setFitHeight(280);
-        cardImageView.setFitHeight(300);
+        cardImageView.setFitWidth(200);
+        cardImageView.setFitHeight(250);
         messageLabel.setStyle("-fx-font-size: 15px");
         vbox.setStyle("-fx-alignment: center; -fx-padding: 15px");
 
@@ -59,6 +59,9 @@ public class HelloApplication extends Application {
 
                 LoteriaCard card = LOTERIA_CARDS[randomIdx];
                 cardImageView.setImage(card.getImage());
+                messageLabel.setText(card.getCardName());
+                cardsShown[randomIdx] = true;
+                cardsDrawn++;
 
             }
         });
