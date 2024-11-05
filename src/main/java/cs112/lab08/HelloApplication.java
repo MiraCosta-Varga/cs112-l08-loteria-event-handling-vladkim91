@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 
 public class HelloApplication extends Application {
@@ -63,6 +64,15 @@ public class HelloApplication extends Application {
                 cardsShown[randomIdx] = true;
                 cardsDrawn++;
 
+//                Progress bar logic
+                gameProgressBar.setProgress((double) cardsDrawn / LOTERIA_CARDS.length);
+
+                if (cardsDrawn == LOTERIA_CARDS.length) {
+                    gameProgressBar.setStyle("-fx-accent: red;");
+                    messageLabel.setText("GAME OVER. No more cards! Exit and run program again to reset ^_^");
+                    cardImageView.setImage(new Image("file:src/main/resources/images/0.png"));
+                    drawCardButton.setDisable(true);
+                }
             }
         });
 
