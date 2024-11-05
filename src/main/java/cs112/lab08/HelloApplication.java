@@ -38,6 +38,9 @@ public class HelloApplication extends Application {
         VBox vbox = new VBox(10, titleLabel, cardImageview, messageLabel, drawCardButton, gameProgressBar);
 
         Scene scene = new Scene(vbox);
+        stage.setTitle("EChALE STEM LOTERIA");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public static void main(String[] args) {
