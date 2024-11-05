@@ -1,11 +1,14 @@
 package cs112.lab08;
-
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import javafx.scene.image.ImageView;
+
 
 public class HelloApplication extends Application {
 
@@ -22,7 +25,19 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        //removed FXML code, fill this in with components, scene, stage, etc.
+        Label titleLabel = new Label("Welcome to EChALE STEM Loteria!");
+
+        ImageView cardImageview = new ImageView();
+
+        Label messageLabel = new Label("Las matematicas");
+
+        Button drawCardButton = new Button("Draw Random Card");
+
+        ProgressBar gameProgressBar = new ProgressBar(0);
+
+        VBox vbox = new VBox(10, titleLabel, cardImageview, messageLabel, drawCardButton, gameProgressBar);
+
+        Scene scene = new Scene(vbox);
     }
 
     public static void main(String[] args) {
